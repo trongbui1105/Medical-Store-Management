@@ -24,6 +24,7 @@ from MedicalApp.views import CompanyNameViewSet
 router = routers.DefaultRouter()
 router.register("company", views.CompanyViewSet, basename="company")
 router.register("companybank", views.CompanyBankViewSet, basename="companybank")
+router.register("medicine", views.MedicineViewSet, basename="medicine")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
