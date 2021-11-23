@@ -19,8 +19,8 @@ class Medicine(models.Model):
     medical_typ = models.CharField(max_length=255)
     buy_price = models.CharField(max_length=255)
     sell_price = models.CharField(max_length=255)
-    c_gst = models.CharField(max_length=255)
-    s_gst = models.CharField(max_length=255)
+    gst = models.CharField(max_length=255)
+    # s_gst = models.CharField(max_length=255)
     batch_no = models.CharField(max_length=255)
     shelf_no = models.CharField(max_length=255)
     expire_date = models.DateField()
@@ -105,7 +105,7 @@ class CompanyAccount(models.Model):
 class CompanyBank(models.Model):
     id = models.AutoField(primary_key=True)
     bank_account_no = models.CharField(max_length=255)
-    ifsc_no = models.CharField(max_length=255)
+    swift_no = models.CharField(max_length=255)
     company_id = models.ForeignKey(Company,on_delete=models.CASCADE)
     added_on = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
@@ -113,7 +113,7 @@ class CompanyBank(models.Model):
 class EmployeeBank(models.Model):
     id = models.AutoField(primary_key=True)
     bank_account_no = models.CharField(max_length=255)
-    ifsc_no = models.CharField(max_length=255)
+    swift_no = models.CharField(max_length=255)
     employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
     added_on = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
