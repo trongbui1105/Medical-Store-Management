@@ -90,6 +90,15 @@ class CompanyBankViewSet(viewsets.ViewSet):
         serializer.save()
         return Response({"error": False, "message": "Data Has Been Updated"})
 
+    def delete(self, request, pk = id):
+        try:
+            companybank = CompanyBank.objects.filter(id=pk)
+            companybank.delete()
+            dict_response = {"error": False, "message": "Data Has Been Deleted"}
+        except:
+            dict_response = {"error": True, "message": "Error During Deleting Company Bank Data"}
+        return Response(dict_response)
+
 
 class CompanyNameViewSet(generics.ListAPIView):
     serializer_class = CompanySerialiazer
@@ -548,3 +557,4 @@ class HomeAPIViewSet(viewsets.ViewSet):
 company_list = CompanyViewSet.as_view({"get": "list"})
 company_create = CompanyViewSet.as_view({"post": "create"})
 company_update = CompanyViewSet.as_view({"put": "update"})
+# company_delete = CompanyViewSet.as_view({"delete": "delete"})
