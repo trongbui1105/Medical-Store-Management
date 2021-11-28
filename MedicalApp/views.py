@@ -202,6 +202,13 @@ class MedicineViewSet(viewsets.ViewSet):
                 serializer3.save()
         return Response({"error": False, "message": "Data Has Been Updated"})
 
+    def delete(self, request, pk = id):
+        queryset = Medicine.objects.filter()
+        medicine = get_object_or_404(queryset, pk = pk)
+        medicine.delete()
+
+        return Response({"error": False, "message": "Medicine Data Delete Successfully"})
+
 #Company Account Viewset
 class CompanyAccountViewSet(viewsets.ViewSet):
     authentication_classes = [JWTAuthentication]
@@ -272,6 +279,13 @@ class EmployeeViewSet(viewsets.ViewSet):
         serializer.is_valid()
         serializer.save()
         return Response({"error": False, "message": "Data Has Been Updated"})
+
+    def delete(self, request, pk = id):
+        queryset = Employee.objects.filter()
+        employee = get_object_or_404(queryset, pk = pk)
+        employee.delete()
+
+        return Response({"error": False, "message": "Employee Data Delete Successfully"})
 
 # Employee Bank Viewset
 class EmployeeBankViewSet(viewsets.ViewSet):
